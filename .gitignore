@@ -1,0 +1,129 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+dermosan_env/
+venv/
+env/
+ENV/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.temp
+
+# Streamlit
+.streamlit/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Cache
+.cache/
+*.cache
+
+# DERMOSAN SPECIFIC - ARCHIVOS PESADOS
+# =====================================
+
+# Modelo entrenado (muy pesado ~367MB)
+Modelo Entrenado/
+*.h5
+*.hdf5
+*.weights.h5
+
+# Datasets de imágenes médicas (muy pesados)
+Datos de prueba/
+data/
+dataset/
+images/
+*.jpg
+*.jpeg
+*.png
+*.bmp
+*.tiff
+*.dcm
+
+# Reportes generados
+reportes/
+reports/
+*.pdf
+*.txt
+
+# Archivos de configuración sensibles
+config.json
+secrets.json
+.env
+
+# Archivos temporales de Streamlit
+.streamlit/secrets.toml
+
+# Backups
+backup/
+*.backup
+*.bak
+
+# Modelos alternativos o checkpoints
+checkpoints/
+saved_models/
+models/
+*.pkl
+*.joblib
+*.model
+
+# Archivos de métricas grandes
+metrics/
+evaluation/
+*.csv
+*.xlsx
+
+# Videos o archivos multimedia pesados
+*.mp4
+*.avi
+*.mov
+
+# Archivos comprimidos
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# Archivos de datos médicos sensibles
+patient_data/
+clinical_data/
+*.dicom
