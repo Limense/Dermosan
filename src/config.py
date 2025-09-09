@@ -6,7 +6,8 @@ import os
 from typing import Dict, List, Tuple
 
 # ── Configuración del modelo ─────────────────────────────────────────────────
-MODEL_PATH = "Modelo Entrenado/best_resnet152.h5"
+MODEL_PATH = "models/best_resnet152.h5"  # Ruta corregida
+MODEL_PATH_FALLBACK = "Modelo Entrenado/best_resnet152.h5"  # Ruta alternativa
 IMG_SIZE = (224, 224)
 BATCH_SIZE = 32
 
