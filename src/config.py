@@ -31,61 +31,61 @@ DISEASE_INFO = {
         "description": "Inflamación crónica de la piel caracterizada por erupciones rojas, picazón y descamación.",
         "severity": "Leve a Moderada",
         "treatment": "Hidratantes, corticosteroides tópicos, antihistamínicos",
-        "color": "#FF6B6B"
+        "color": "#E74C3C"  # Rojo médico
     },
     "Warts Molluscum and Viral Infections": {
         "description": "Infecciones virales de la piel que causan pequeñas protuberancias o verrugas.",
         "severity": "Leve",
         "treatment": "Crioterapia, medicamentos tópicos, observación",
-        "color": "#4ECDC4"
+        "color": "#1ABC9C"  # Verde azulado médico
     },
     "Melanoma": {
         "description": "Tipo más peligroso de cáncer de piel que se desarrolla en los melanocitos.",
         "severity": "Grave - Requiere atención inmediata",
         "treatment": "Cirugía, inmunoterapia, terapia dirigida",
-        "color": "#FF4757"
+        "color": "#8E44AD"  # Púrpura médico (crítico)
     },
     "Atopic Dermatitis": {
         "description": "Forma de eczema crónico común en niños, caracterizado por piel seca y con picazón.",
         "severity": "Leve a Moderada",
         "treatment": "Hidratantes, corticosteroides, inmunomoduladores",
-        "color": "#FFA726"
+        "color": "#F39C12"  # Naranja médico
     },
     "Basal Cell Carcinoma (BCC)": {
         "description": "Tipo más común de cáncer de piel, crecimiento lento y raramente metastásico.",
         "severity": "Moderada",
         "treatment": "Cirugía, crioterapia, medicamentos tópicos",
-        "color": "#EF5350"
+        "color": "#C0392B"  # Rojo oscuro médico
     },
     "Melanocytic Nevi (NV)": {
         "description": "Lunares benignos comunes, generalmente no requieren tratamiento.",
         "severity": "Benigna",
         "treatment": "Observación, biopsia si hay cambios",
-        "color": "#66BB6A"
+        "color": "#27AE60"  # Verde médico
     },
     "Benign Keratosis-like Lesions (BKL)": {
         "description": "Lesiones benignas de la piel, incluye queratosis seborreica y lesiones similares.",
         "severity": "Benigna",
         "treatment": "Observación, remoción cosmética si se desea",
-        "color": "#42A5F5"
+        "color": "#3498DB"  # Azul médico
     },
     "Psoriasis Lichen Planus": {
         "description": "Enfermedades inflamatorias crónicas de la piel con placas escamosas.",
         "severity": "Moderada",
         "treatment": "Corticosteroides, inmunosupresores, fototerapia",
-        "color": "#AB47BC"
+        "color": "#9B59B6"  # Púrpura claro médico
     },
     "Seborrheic Keratoses": {
         "description": "Crecimientos benignos de la piel, comunes en adultos mayores.",
         "severity": "Benigna",
         "treatment": "Observación, remoción cosmética",
-        "color": "#26A69A"
+        "color": "#16A085"  # Verde oscuro médico
     },
     "Tinea Ringworm Candidiasis": {
         "description": "Infecciones fúngicas de la piel que causan erupciones circulares o irritación.",
         "severity": "Leve a Moderada",
         "treatment": "Antifúngicos tópicos u orales",
-        "color": "#FFCA28"
+        "color": "#E67E22"  # Naranja oscuro médico
     }
 }
 

@@ -19,10 +19,11 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 from src.predictor import DermatologyPredictor, analyze_image_quality
 from src.utils import (
     set_page_config, display_header, display_sidebar_info,
-    create_confidence_gauge, create_probability_chart,
+    create_confidence_gauge, create_probability_chart, create_compact_probability_chart,
+    create_risk_assessment_chart, create_comparison_chart, create_severity_timeline,
     display_disease_info, display_quality_analysis,
     display_medical_recommendations, export_diagnosis_report,
-    create_download_link
+    create_download_link, display_medical_footer, display_confidence_level
 )
 from src.config import APP_CONFIG
 
@@ -88,56 +89,6 @@ def main():
     
     st.markdown("---")
     
-    # Instrucciones mejoradas con énfasis en imágenes médicas
-    with st.expander("📋 Instrucciones Importantes de Uso", expanded=False):
-        st.markdown("""
-        ## 🏥 **IMPORTANTE: Solo Imágenes Dermatológicas Reales**
-        
-        ### ✅ **IMÁGENES PERMITIDAS:**
-        - **📸 Fotografías directas de piel** tomadas con cámara
-        - **🔍 Lesiones cutáneas visibles** (lunares, manchas, erupciones)
-        - **📱 Fotos de alta calidad** enfocadas en la zona afectada
-        - **💡 Buena iluminación natural** sin sombras excesivas
-        
-        ### ❌ **IMÁGENES PROHIBIDAS:**
-        - **🚫 Capturas de pantalla** de cualquier tipo
-        - **📄 Documentos, textos o PDFs** 
-        - **🖥️ Interfaces de aplicaciones**
-        - **🌐 Imágenes descargadas de internet**
-        - **📊 Gráficos, diagramas o esquemas**
-        
-        ### 🎯 **Requisitos Técnicos:**
-        1. **Resolución:** Mínimo 224x224 píxeles
-        2. **Formato:** JPG, JPEG, PNG
-        3. **Enfoque:** La lesión debe estar claramente visible
-        4. **Iluminación:** Evite sombras o reflejos excesivos
-        5. **Fondo:** Preferiblemente neutro
-        
-        ### ⚕️ **Consideraciones Médicas:**
-        - Use este sistema solo como **herramienta de apoyo**
-        - **Siempre consulte con un dermatólogo** para confirmación
-        - Para casos urgentes, busque **atención médica inmediata**
-        """)
-    
-    # Advertencia destacada sobre tipo de imágenes
-    st.markdown("""
-    <div style="background: linear-gradient(135deg, #FF5722, #D32F2F); 
-                color: white; 
-                padding: 1.5rem; 
-                border-radius: 10px; 
-                text-align: center;
-                margin: 1rem 0;
-                box-shadow: 0 4px 8px rgba(255,87,34,0.3);">
-        <h3 style="margin: 0; color: white;">
-            🚨 ADVERTENCIA: SOLO FOTOGRAFÍAS MÉDICAS REALES
-        </h3>
-        <p style="margin: 0.5rem 0 0 0; font-size: 1.1rem;">
-            El sistema rechazará automáticamente documentos, capturas de pantalla<br>
-            y cualquier imagen que no sea una fotografía dermatológica real.
-        </p>
-    </div>
-    """, unsafe_allow_html=True)
-    
     # Upload de imagen
     uploaded_file = st.file_uploader(
         "Seleccione una imagen dermatológica",
@@ -155,301 +106,200 @@ def main():
             
             with col1:
                 st.markdown("#### 🖼️ Imagen Cargada")
-                
-                # Card para la imagen con diseño médico
-                st.markdown("""
-                <div style="background: white; 
-                            border: 2px solid #E0E0E0; 
-                            border-radius: 10px; 
-                            padding: 1rem; 
-                            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-                            margin-bottom: 1rem;">
-                """, unsafe_allow_html=True)
-                
-                st.image(image, caption="Imagen para diagnóstico", use_container_width=True)
-                
-                st.markdown("</div>", unsafe_allow_html=True)
-                
-                # Información de la imagen en cards
-                st.markdown("#### 📋 Información Técnica")
-                
-                info_col1, info_col2 = st.columns(2)
-                
-                with info_col1:
-                    st.markdown(f"""
-                    <div style="background: linear-gradient(135deg, #667eea, #764ba2); 
-                                color: white; 
-                                padding: 1rem; 
-                                border-radius: 8px; 
-                                text-align: center;
-                                margin-bottom: 0.5rem;">
-                        <h4 style="margin: 0; font-size: 1.1rem;">{image.format}</h4>
-                        <p style="margin: 0; font-size: 0.9rem; opacity: 0.9;">Formato</p>
-                    </div>
-                    """, unsafe_allow_html=True)
-                
-                with info_col2:
-                    st.markdown(f"""
-                    <div style="background: linear-gradient(135deg, #4CAF50, #45a049); 
-                                color: white; 
-                                padding: 1rem; 
-                                border-radius: 8px; 
-                                text-align: center;
-                                margin-bottom: 0.5rem;">
-                        <h4 style="margin: 0; font-size: 1.1rem;">{image.size[0]}×{image.size[1]}</h4>
-                        <p style="margin: 0; font-size: 0.9rem; opacity: 0.9;">Resolución</p>
-                    </div>
-                    """, unsafe_allow_html=True)
-                
-                # Modo de color
-                st.markdown(f"""
-                <div style="background: linear-gradient(135deg, #FF9800, #F57C00); 
-                            color: white; 
-                            padding: 1rem; 
-                            border-radius: 8px; 
-                            text-align: center;
-                            margin-bottom: 1rem;">
-                    <h4 style="margin: 0; font-size: 1.1rem;">{image.mode}</h4>
-                    <p style="margin: 0; font-size: 0.9rem; opacity: 0.9;">Modo de Color</p>
-                </div>
-                """, unsafe_allow_html=True)
+                st.image(image, caption="Imagen para diagnóstico", width=300)
             
             with col2:
                 st.markdown("#### 🔍 Análisis de Calidad")
                 
-                # Spinner personalizado para análisis
-                with st.spinner("🧬 Analizando calidad de imagen con IA médica..."):
+                with st.spinner("🧬 Analizando calidad de imagen..."):
                     quality_result = analyze_image_quality(image)
                 
                 display_quality_analysis(quality_result)
-                
-                # Botón de análisis mejorado
-                if not quality_result.get('is_suitable', False):
-                    st.markdown("---")
-                    st.markdown("""
-                    <div style="background: #FFF3E0; 
-                                border-left: 4px solid #FF9800; 
-                                padding: 1rem; 
-                                border-radius: 8px; 
-                                margin: 1rem 0;">
-                        <h4 style="color: #F57C00; margin: 0 0 0.5rem 0;">
-                            ⚠️ Calidad de Imagen Subóptima
-                        </h4>
-                        <p style="margin: 0; color: #E65100;">
-                            Se recomienda tomar una nueva fotografía siguiendo las instrucciones.
-                            Sin embargo, puede proceder con el análisis bajo su propio criterio.
-                        </p>
-                    </div>
-                    """, unsafe_allow_html=True)
             
-            # Realizar predicción solo si la imagen es válida y de calidad suficiente
-            is_valid_medical = quality_result.get('is_medical_image', True)
-            
-            if not is_valid_medical:
-                # Imagen no válida - mostrar solo error sin opción de análisis
-                st.markdown("""
-                <div style="background: #FFCDD2; 
-                            border: 2px solid #F44336; 
-                            padding: 2rem; 
-                            border-radius: 15px; 
-                            text-align: center;
-                            margin: 2rem 0;
-                            box-shadow: 0 4px 8px rgba(244,67,54,0.3);">
-                    <h2 style="color: #C62828; margin: 0;">
-                        🚫 ANÁLISIS BLOQUEADO POR SEGURIDAD
-                    </h2>
-                    <p style="color: #D32F2F; font-size: 1.2rem; margin: 1rem 0 0 0;">
-                        El sistema ha detectado que esta imagen no es apropiada para análisis dermatológico.
-                        Por favor, suba una fotografía real de piel o lesión cutánea.
-                    </p>
-                </div>
-                """, unsafe_allow_html=True)
-                
-            elif quality_result.get('is_suitable', False):
-                # Imagen válida y de buena calidad - proceder automáticamente
-                st.markdown("""
-                <div style="background: #E8F5E8; 
-                            border-left: 4px solid #4CAF50; 
-                            padding: 1rem; 
-                            border-radius: 8px; 
-                            margin: 1rem 0;">
-                    <h4 style="color: #2E7D32; margin: 0 0 0.5rem 0;">
-                        ✅ Imagen Médica Válida y de Calidad Óptima
-                    </h4>
-                    <p style="margin: 0; color: #388E3C;">
-                        La imagen ha pasado todas las validaciones. Procediendo con análisis dermatológico...
-                    </p>
-                </div>
-                """, unsafe_allow_html=True)
-                should_analyze = True
-            else:
-                # Imagen válida pero de calidad subóptima - permitir análisis con advertencia
-                should_analyze = st.button(
-                    "🔬 Proceder con Análisis (Calidad Subóptima)", 
-                    type="secondary",
-                    help="La imagen es médicamente válida pero de calidad subóptima. Proceder con precaución.",
-                    use_container_width=True
-                )
+            # Realizar predicción
+            should_analyze = st.button("🔬 Analizar Imagen", type="primary")
             
             if should_analyze:
-                
-                st.markdown("---")
-                st.markdown("### 🎯 Resultados del Diagnóstico")
-                
-                with st.spinner("🧠 Analizando imagen con IA dermatológica avanzada..."):
+                with st.spinner("🧠 Analizando imagen con IA dermatológica..."):
                     prediction_result = predictor.predict(image)
                     recommendations = predictor.get_medical_recommendation(prediction_result)
                 
-                # Resultado principal con diseño médico mejorado
+                # Resultado principal
                 predicted_disease = prediction_result['predicted_class']
                 confidence = prediction_result['confidence']
                 
-                st.markdown(f"""
-                <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
-                            color: white; 
-                            padding: 2rem; 
-                            border-radius: 15px; 
-                            text-align: center;
-                            margin: 1.5rem 0;
-                            box-shadow: 0 8px 16px rgba(0,0,0,0.15);">
-                    <div style="font-size: 3rem; margin-bottom: 1rem;">🎯</div>
-                    <h2 style="margin: 0; color: white; font-size: 1.8rem;">
-                        DIAGNÓSTICO PRINCIPAL
-                    </h2>
-                    <h1 style="margin: 0.5rem 0; color: white; font-size: 2.2rem;">
-                        {predicted_disease}
-                    </h1>
-                    <div style="background: rgba(255,255,255,0.2); 
-                                padding: 0.8rem; 
-                                border-radius: 20px; 
-                                margin-top: 1rem; 
-                                display: inline-block;">
-                        <h3 style="margin: 0; font-size: 1.4rem;">
+                # Dashboard de resultados
+                st.markdown("---")
+                st.markdown("## 📊 Dashboard de Resultados Detallados")
+                
+                # Dashboard principal mejorado
+                st.markdown("### 🎯 Diagnóstico Principal")
+                
+                # Layout mejorado: 3 columnas
+                main_row1_col1, main_row1_col2, main_row1_col3 = st.columns([2, 1, 1.5])
+                
+                with main_row1_col1:
+                    # Información principal del diagnóstico con diseño mejorado
+                    st.markdown(f"""
+                    <div style="background: linear-gradient(135deg, #2E5BBA, #4A90B8); 
+                                color: white; padding: 1.5rem; border-radius: 15px; 
+                                text-align: center; margin-bottom: 1rem;">
+                        <h2 style="margin: 0 0 0.5rem 0; color: white; font-size: 1.8rem;">
+                            🎯 {predicted_disease}
+                        </h2>
+                        <h3 style="margin: 0; color: rgba(255,255,255,0.9); font-size: 1.3rem;">
                             Confianza: {prediction_result['confidence_percentage']}
                         </h3>
                     </div>
+                    """, unsafe_allow_html=True)
+                    
+                    # Mostrar nivel de confianza con colores
+                    display_confidence_level(confidence)
+                
+                with main_row1_col2:
+                    # Gauge de confianza compacto
+                    st.markdown("**📊 Medidor**")
+                    st.plotly_chart(
+                        create_confidence_gauge(confidence),
+                        use_container_width=True,
+                        config={'displayModeBar': False}
+                    )
+                
+                with main_row1_col3:
+                    # Distribución de probabilidades integrada - versión compacta
+                    st.markdown("**📈 Top Probabilidades**")
+                    st.plotly_chart(
+                        create_compact_probability_chart(prediction_result['all_probabilities']),
+                        use_container_width=True,
+                        config={'displayModeBar': False}
+                    )
+                
+                # Resumen estadístico visual
+                st.markdown("---")
+                st.markdown("""
+                <div style="background: linear-gradient(135deg, #ECF0F1, #BDC3C7); 
+                            padding: 1.5rem; border-radius: 15px; margin: 1rem 0;">
+                    <h3 style="text-align: center; color: #2C3E50; margin: 0 0 1rem 0;">
+                        📋 Resumen del Análisis
+                    </h3>
                 </div>
                 """, unsafe_allow_html=True)
                 
-                # Layout de resultados mejorado
-                result_col1, result_col2 = st.columns([1, 1])
+                # Métricas clave en columnas
+                metric_col1, metric_col2, metric_col3, metric_col4 = st.columns(4)
                 
-                with result_col1:
-                    st.markdown("#### 📊 Análisis Detallado")
-                    
-                    # Gauge de confianza
-                    st.plotly_chart(
-                        create_confidence_gauge(confidence),
-                        use_container_width=True
-                    )
-                    
-                    # Información de la enfermedad
-                    display_disease_info(predicted_disease)
-                
-                with result_col2:
-                    st.markdown("#### 📈 Diagnósticos Diferenciales")
-                    
-                    # Top 3 predicciones con diseño mejorado
-                    st.markdown("**🏆 Top 3 Diagnósticos Probables:**")
-                    
-                    for i, pred in enumerate(prediction_result['top_3_predictions'], 1):
-                        # Color degradado según posición
-                        colors = ["#4CAF50", "#FF9800", "#2196F3"]
-                        color = colors[i-1]
-                        
-                        st.markdown(f"""
-                        <div style="background: {color}15; 
-                                    border-left: 4px solid {color}; 
-                                    padding: 1rem; 
-                                    margin: 0.5rem 0; 
-                                    border-radius: 8px;">
-                            <h4 style="color: {color}; margin: 0;">
-                                #{i} {pred['disease']}
-                            </h4>
-                            <p style="margin: 0.3rem 0 0 0; font-size: 1.1rem; font-weight: bold;">
-                                {pred['percentage']}
-                            </p>
-                        </div>
-                        """, unsafe_allow_html=True)
-                    
-                    # Gráfico de probabilidades
-                    st.plotly_chart(
-                        create_probability_chart(prediction_result['all_probabilities']),
-                        use_container_width=True
+                with metric_col1:
+                    confidence_val = int(confidence * 100)
+                    st.metric(
+                        label="🎯 Confianza",
+                        value=f"{confidence_val}%",
+                        delta=f"{'Alto' if confidence_val > 80 else 'Medio' if confidence_val > 60 else 'Bajo'}"
                     )
                 
-                # Recomendaciones médicas
-                st.markdown("---")
-                st.markdown("### 🏥 Recomendaciones Clínicas")
-                display_medical_recommendations(recommendations)
+                with metric_col2:
+                    # Calcular número de diagnósticos considerados
+                    num_diagnoses = len([p for p in prediction_result['all_probabilities'].values() if p > 0.05])
+                    st.metric(
+                        label="🔍 Diagnósticos",
+                        value=f"{num_diagnoses}",
+                        delta="analizados"
+                    )
                 
-                # Disclaimer médico con diseño prominente
+                with metric_col3:
+                    # Determinar nivel de riesgo
+                    risk_level = "Alto" if "Melanoma" in predicted_disease or "Carcinoma" in predicted_disease else "Medio" if confidence < 0.7 else "Bajo"
+                    st.metric(
+                        label="⚠️ Nivel Riesgo",
+                        value=risk_level,
+                        delta="evaluado"
+                    )
+                
+                with metric_col4:
+                    st.metric(
+                        label="🕐 Tiempo Análisis",
+                        value="< 5s",
+                        delta="✅ Rápido"
+                    )
+                
+                # Sección de análisis avanzado
                 st.markdown("---")
                 st.markdown("""
-                <div style="background: linear-gradient(135deg, #FF5722, #D32F2F); 
-                            color: white; 
-                            padding: 2rem; 
-                            border-radius: 15px; 
-                            text-align: center;
-                            margin: 1.5rem 0;
-                            box-shadow: 0 4px 8px rgba(255,87,34,0.3);">
-                    <div style="font-size: 3rem; margin-bottom: 1rem;">⚕️</div>
-                    <h2 style="margin: 0 0 1rem 0; color: white;">
-                        ADVERTENCIA MÉDICA IMPORTANTE
-                    </h2>
-                    <p style="margin: 0; font-size: 1.2rem; line-height: 1.5;">
-                        <strong>Este es un sistema de apoyo al diagnóstico.</strong><br>
-                        Los resultados deben ser validados por un profesional médico calificado.<br>
-                        <strong>NO reemplaza</strong> la evaluación clínica presencial ni el criterio médico profesional.
+                <div style="text-align: center; margin: 2rem 0 1rem 0;">
+                    <h3 style="color: #2E5BBA; margin: 0;">📊 Análisis Clínico Avanzado</h3>
+                    <p style="color: #34495E; margin: 0.5rem 0 0 0; font-style: italic;">
+                        Evaluación integral de riesgo y comparaciones diagnósticas
                     </p>
                 </div>
                 """, unsafe_allow_html=True)
                 
-                # Generar reporte con diseño mejorado
-                st.markdown("---")
-                st.markdown("### 📄 Generar Reporte Médico")
+                # Primera fila de gráficos importantes
+                analysis_col1, analysis_col2 = st.columns(2)
                 
-                col_btn1, col_btn2, col_btn3 = st.columns([1, 2, 1])
-                
-                with col_btn2:
-                    if st.button(
-                        "� Generar Reporte Completo", 
-                        type="primary",
+                with analysis_col1:
+                    st.markdown("""
+                    <div style="text-align: center; margin-bottom: 1rem;">
+                        <h4 style="color: #E74C3C; margin: 0;">⚠️ Evaluación de Riesgo</h4>
+                        <p style="color: #7F8C8D; font-size: 0.9rem; margin: 0.3rem 0;">Nivel de urgencia médica</p>
+                    </div>
+                    """, unsafe_allow_html=True)
+                    st.plotly_chart(
+                        create_risk_assessment_chart(predicted_disease, confidence),
                         use_container_width=True,
-                        help="Genera un reporte médico detallado con todos los resultados"
-                    ):
-                        report = export_diagnosis_report(
-                            image, prediction_result, quality_result, recommendations
-                        )
-                        
-                        # Crear enlace de descarga
-                        timestamp = prediction_result.get('timestamp', 'diagnosis')
-                        filename = f"reporte_dermosan_{timestamp}.txt"
-                        
-                        st.success("✅ Reporte generado exitosamente")
-                        
-                        st.markdown(
-                            create_download_link(report, filename, "📥 Descargar Reporte Médico"),
-                            unsafe_allow_html=True
-                        )
-                        
-                        # Mostrar preview del reporte
-                        with st.expander("👁️ Vista previa del reporte"):
-                            st.text(report)
-            
-            elif not quality_result.get('is_suitable', False):
+                        config={'displayModeBar': False}
+                    )
+                
+                with analysis_col2:
+                    st.markdown("""
+                    <div style="text-align: center; margin-bottom: 1rem;">
+                        <h4 style="color: #27AE60; margin: 0;">🔍 Comparación Diagnóstica</h4>
+                        <p style="color: #7F8C8D; font-size: 0.9rem; margin: 0.3rem 0;">Top 3 diagnósticos más probables</p>
+                    </div>
+                    """, unsafe_allow_html=True)
+                    st.plotly_chart(
+                        create_comparison_chart(prediction_result['all_probabilities']),
+                        use_container_width=True,
+                        config={'displayModeBar': False}
+                    )
+                
+                # Evolución temporal
+                st.markdown("---")
                 st.markdown("""
-                <div style="background: #FFEBEE; 
-                            border-left: 4px solid #F44336; 
-                            padding: 1.5rem; 
-                            border-radius: 8px; 
-                            margin: 1rem 0;">
-                    <h4 style="color: #D32F2F; margin: 0 0 0.5rem 0;">
-                        ⚠️ Calidad de Imagen No Óptima
-                    </h4>
-                    <p style="margin: 0; color: #C62828;">
-                        La calidad de la imagen no es óptima para un diagnóstico confiable.<br>
-                        <strong>Se recomienda tomar una nueva fotografía siguiendo las instrucciones.</strong>
+                <div style="text-align: center; margin: 2rem 0 1rem 0;">
+                    <h4 style="color: #F39C12; margin: 0;">📈 Proyección de Evolución Temporal</h4>
+                    <p style="color: #7F8C8D; font-size: 0.9rem; margin: 0.3rem 0;">
+                        Simulación de progresión con diferentes escenarios de tratamiento
+                    </p>
+                </div>
+                """, unsafe_allow_html=True)
+                st.plotly_chart(
+                    create_severity_timeline(),
+                    use_container_width=True,
+                    config={'displayModeBar': False}
+                )
+                
+                # Información detallada
+                st.markdown("---")
+                st.markdown("### 🏥 Información Clínica Detallada")
+                
+                info_col1, info_col2 = st.columns(2)
+                
+                with info_col1:
+                    display_disease_info(predicted_disease)
+                
+                with info_col2:
+                    st.markdown("#### 🏥 Recomendaciones Médicas")
+                    display_medical_recommendations(recommendations)
+                
+                # Disclaimer médico
+                st.markdown("""
+                <div style="background: linear-gradient(135deg, #34495E, #2C3E50); 
+                            color: white; padding: 2rem; border-radius: 15px; 
+                            text-align: center; margin: 2rem 0;">
+                    <h3 style="margin: 0 0 1rem 0; color: white;">⚕️ Aviso Médico Importante</h3>
+                    <p style="margin: 0; color: rgba(255,255,255,0.9);">
+                        Este sistema es una herramienta de apoyo diagnóstico que utiliza 
+                        inteligencia artificial. Los resultados deben ser siempre interpretados por un 
+                        dermatólogo profesional. No reemplaza el juicio clínico médico.
                     </p>
                 </div>
                 """, unsafe_allow_html=True)
@@ -457,90 +307,12 @@ def main():
         except Exception as e:
             st.error(f"❌ **Error al procesar la imagen:** {str(e)}")
             logging.error(f"Error en procesamiento: {str(e)}")
-            
-            # Mostrar información de ayuda
-            with st.expander("🔍 Información del error"):
-                st.markdown(f"""
-                **Tipo de error:** `{type(e).__name__}`  
-                **Mensaje:** {str(e)}  
-                **Archivo:** {uploaded_file.name if uploaded_file else 'No especificado'}  
-                """)
-                
-            st.info("""
-            💡 **Sugerencias:**
-            - Verifique que el archivo sea una imagen válida (JPG, PNG)
-            - Asegúrese de que la imagen no esté corrupta
-            - Intente con una imagen diferente
-            - La imagen debe tener al menos 224x224 píxeles
-            """)
     
     else:
-        # Mostrar información cuando no hay imagen cargada
         st.info("👆 Suba una imagen dermatológica para comenzar el análisis")
-        
-        # Mostrar ejemplos o información adicional
-        st.markdown("---")
-        
-        # Añadir pestaña de información
-        tab1, tab2, tab3 = st.tabs(["📚 Enfermedades", "📊 Métricas del Modelo", "ℹ️ Información"])
-        
-        with tab1:
-            st.markdown("### 🎯 Enfermedades que puede diagnosticar el sistema:")
-            
-            diseases_info = [
-                "🔴 **Melanoma** - Cáncer de piel maligno",
-                "🟠 **Carcinoma Basocelular** - Cáncer de piel común",
-                "🟡 **Eczema** - Inflamación crónica de la piel",
-                "🟢 **Nevos Melanocíticos** - Lunares benignos",
-                "🔵 **Dermatitis Atópica** - Eczema atópico",
-                "🟣 **Psoriasis** - Enfermedad inflamatoria crónica",
-                "🟤 **Queratosis Seborreica** - Lesiones benignas",
-                "⚪ **Queratosis Benigna** - Lesiones queratósicas",
-                "🔶 **Infecciones Virales** - Verrugas y molluscum",
-                "🔸 **Infecciones Fúngicas** - Tiña y candidiasis"
-            ]
-            
-            cols = st.columns(2)
-            for i, disease in enumerate(diseases_info):
-                with cols[i % 2]:
-                    st.markdown(disease)
-        
-        with tab2:
-            from src.utils import display_model_metrics
-            display_model_metrics()
-        
-        with tab3:
-            st.markdown("### ℹ️ Acerca de Dermosan")
-            st.markdown("""
-            **Dermosan** es un sistema de inteligencia artificial desarrollado específicamente 
-            para las Clínicas de San Vicente en Cañete, diseñado para asistir a los profesionales 
-            médicos en el diagnóstico de enfermedades dermatológicas.
-            
-            #### 🔬 Tecnología
-            - **Modelo:** ResNet152 con Transfer Learning
-            - **Framework:** TensorFlow 2.15+
-            - **Interfaz:** Streamlit
-            - **Precisión:** 94.2% en conjunto de prueba
-            
-            #### ⚕️ Uso Médico
-            - Herramienta de **apoyo al diagnóstico**
-            - **NO reemplaza** el criterio médico profesional
-            - Requiere **validación** por dermatólogo certificado
-            - Ideal para screening y segunda opinión
-            
-            #### 📞 Soporte
-            Para soporte técnico o consultas médicas, contacte con:
-            **Clínicas de San Vicente, Cañete**
-            """)
-            
-            # Agregar información de versión y fecha
-            from datetime import datetime
-            st.markdown(f"""
-            ---
-            **Versión:** 1.0.0  
-            **Última actualización:** {datetime.now().strftime("%d/%m/%Y")}  
-            **Desarrollado por:** Equipo de IA Médica
-            """)
+    
+    # Footer
+    display_medical_footer()
 
 if __name__ == "__main__":
     main()

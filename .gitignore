@@ -18,12 +18,32 @@ var/
 wheels/
 share/python-wheels/
 *.egg-info/
+
+# Dermosan específico
+dermosan_venv/
+Archivos_de_Entrenamiento/
+*.h5
+*.hdf5
+models/
+temp_images/
+uploads/
+logs/
+*.log
+
+# Archivos temporales
+*_backup.*
+*.tmp
+*.temp
+
+# Archivos de configuración local
+.env.local
+config.local.py
 .installed.cfg
 *.egg
 MANIFEST
 
 # Virtual environments
-dermosan_env/
+dermosan_venv/
 venv/
 env/
 ENV/
