@@ -34,15 +34,15 @@ def display_header():
                 padding: 2rem; border-radius: 15px; margin-bottom: 2rem; 
                 box-shadow: 0 8px 24px rgba(46, 91, 186, 0.15);">
         <h1 style="color: white; text-align: center; margin: 0; font-size: 2.5rem; font-weight: 600;">
-            🏥 Dermosan - Sistema de Diagnóstico Dermatológico
+             Dermosan - Sistema de Diagnóstico Dermatológico
         </h1>
         <p style="color: white; text-align: center; margin: 0.5rem 0 0 0; font-size: 1.2rem; opacity: 0.95;">
-            Clínicas de San Vicente, Cañete | Versión 1.0.0
+            Clínicas de San Vicente, Cañete 
         </p>
         <div style="text-align: center; margin-top: 1.5rem;">
             <span style="background: rgba(255,255,255,0.2); color: white; padding: 0.5rem 1.5rem; 
                          border-radius: 25px; font-size: 0.95rem; border: 1px solid rgba(255,255,255,0.3);">
-                🤖 IA ResNet152 | 📊 94.2% Precisión | 🎯 10 Enfermedades
+                 IA ResNet152 |  95% Precisión |  10 Enfermedades
             </span>
         </div>
     </div>
@@ -51,7 +51,7 @@ def display_header():
 def display_sidebar_info():
     """Muestra información mejorada en la barra lateral."""
     with st.sidebar:
-        st.markdown("### ℹ️ Información del Sistema")
+        st.markdown("### Información del Sistema")
         
         # Métricas del modelo en cajas coloridas
         col1, col2 = st.columns(2)
@@ -60,7 +60,7 @@ def display_sidebar_info():
             <div style="background: linear-gradient(135deg, #27AE60, #2ECC71); color: white; 
                         padding: 1rem; border-radius: 12px; text-align: center; margin-bottom: 0.5rem;
                         box-shadow: 0 4px 12px rgba(39, 174, 96, 0.2);">
-                <h3 style="margin: 0; font-size: 1.5rem; font-weight: 600;">94.2%</h3>
+                <h3 style="margin: 0; font-size: 1.5rem; font-weight: 600;">95%</h3>
                 <p style="margin: 0; font-size: 0.8rem; opacity: 0.9;">Precisión</p>
             </div>
             """, unsafe_allow_html=True)
@@ -87,18 +87,18 @@ def display_sidebar_info():
         st.markdown(create_status_indicator("active", "Modelo Cargado"), unsafe_allow_html=True)
         st.markdown(create_status_indicator("active", "IA Lista para Diagnóstico"), unsafe_allow_html=True)
         
-        st.markdown("### 📊 Estadísticas del Dataset")
+        st.markdown("### Estadísticas del Dataset")
         dataset_stats = {
-            "Melanoma": 15750,
+            "Melanoma": 3140,
             "Melanocytic Nevi": 7970,
             "Basal Cell Carcinoma": 3323,
             "Benign Keratosis": 2624,
             "Warts Molluscum": 2103,
-            "Psoriasis Lichen": 2000,
-            "Seborrheic Keratoses": 1800,
-            "Tinea Ringworm": 1700,
+            "Psoriasis Lichen": 2055,
+            "Seborrheic Keratoses": 1847,
+            "Tinea Ringworm": 1702,
             "Eczema": 1677,
-            "Atopic Dermatitis": 1250
+            "Atopic Dermatitis": 1257
         }
         
         df_stats = pd.DataFrame(
@@ -773,7 +773,7 @@ def display_model_metrics():
         st.markdown("""
         <div style="background: linear-gradient(135deg, #4CAF50, #45a049); color: white; 
                     padding: 1.5rem; border-radius: 10px; text-align: center;">
-            <h2 style="margin: 0; font-size: 2rem;">94.2%</h2>
+            <h2 style="margin: 0; font-size: 2rem;">95%</h2>
             <p style="margin: 0.5rem 0 0 0;">Precisión General</p>
         </div>
         """, unsafe_allow_html=True)
@@ -887,7 +887,7 @@ def create_risk_assessment_chart(predicted_disease: str, confidence: float) -> g
     
     fig.update_layout(
         title=dict(
-            text=f"⚠️ Evaluación de Riesgo: {current_risk.upper()}",
+            text=f"Evaluación de Riesgo: {current_risk.upper()}",
             font=dict(size=18, color='#2E5BBA', family="Arial Bold"),
             x=0.5
         ),
@@ -957,7 +957,7 @@ def create_comparison_chart(probabilities: Dict[str, float]) -> go.Figure:
     
     fig.update_layout(
         title=dict(
-            text="🔍 Comparación Top 3 Diagnósticos",
+            text="Comparación Top 3 Diagnósticos",
             font=dict(size=18, color='#2E5BBA', family="Arial Bold"),
             x=0.5
         ),
@@ -1036,7 +1036,7 @@ def create_severity_timeline() -> go.Figure:
     
     fig.update_layout(
         title=dict(
-            text="📈 Evolución Temporal de Severidad",
+            text="Evolución Temporal de Severidad",
             font=dict(size=18, color='#2E5BBA', family="Arial Bold"),
             x=0.5
         ),
@@ -1064,7 +1064,7 @@ def display_medical_footer():
     """Muestra un footer médico profesional."""
     st.markdown("""
     <div class="footer">
-        <h4 style="margin: 0 0 1rem 0;">⚕️ Dermosan - Sistema de Diagnóstico Dermatológico</h4>
+        <h4 style="margin: 0 0 1rem 0;"> Dermosan - Sistema de Diagnóstico Dermatológico</h4>
         <p style="margin: 0.5rem 0; opacity: 0.9;">
             Clínicas de San Vicente, Cañete | Desarrollado con IA ResNet152
         </p>
@@ -1074,7 +1074,7 @@ def display_medical_footer():
         </p>
         <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.2);">
             <small style="opacity: 0.7;">
-                © 2024 Dermosan v1.0.0 | Precisión: 94.2% | 10 Enfermedades Detectables
+                © 2025 Dermosan | Precisión: 95% | 10 Enfermedades Detectables
             </small>
         </div>
     </div>

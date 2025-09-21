@@ -94,7 +94,7 @@ streamlit run app.py
 ## 📊 Rendimiento del Modelo
 
 - **Arquitectura**: ResNet152 con transfer learning
-- **Precisión estimada**: ~94.2%
+- **Precisión estimada**: ~95%
 - **Dataset**: 30,000+ imágenes dermatológicas
 - **Validación**: Split 80/10/10 (train/val/test)
 - **Optimizaciones**: Data augmentation, class balancing

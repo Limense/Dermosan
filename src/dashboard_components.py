@@ -156,7 +156,7 @@ def create_system_metrics():
                     text-align: center;
                     box-shadow: 0 4px 16px rgba(142, 68, 173, 0.3);">
             <div style="font-size: 2rem; margin-bottom: 0.5rem;">📊</div>
-            <h3 style="margin: 0; font-size: 1.8rem;">94.2%</h3>
+            <h3 style="margin: 0; font-size: 1.8rem;">95%</h3>
             <p style="margin: 0.5rem 0 0 0; opacity: 0.9;">Precisión Global</p>
         </div>
         """, unsafe_allow_html=True)

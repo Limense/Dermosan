@@ -91,9 +91,8 @@ DISEASE_INFO = {
 
 # ── Configuración de la aplicación ────────────────────────────────────────────
 APP_CONFIG = {
-    "title": "🏥 Dermosan - Sistema de Diagnóstico Dermatológico",
+    "title": " Dermosan - Sistema de Diagnóstico Dermatológico",
     "subtitle": "Clínicas de San Vicente, Cañete",
-    "version": "1.0.0",
     "description": "Sistema automatizado de diagnóstico de enfermedades dermatológicas usando Deep Learning"
 }
 

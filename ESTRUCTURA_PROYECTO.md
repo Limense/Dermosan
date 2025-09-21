@@ -86,7 +86,7 @@ Dermosan/
 - **Módulos src:** 4 archivos
 - **Tamaño modelo:** ~500MB (best_resnet152.h5)
 - **Dependencias:** TensorFlow, Streamlit, Plotly, PIL
-- **Precisión IA:** 94.2%
+- **Precisión IA:** 95%
 
 ---
 *Estructura optimizada - Septiembre 2025*
