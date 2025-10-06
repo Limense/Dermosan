@@ -147,3 +147,6 @@ evaluation/
 patient_data/
 clinical_data/
 *.dicom
+
+
+/Script_Entrenamiento
