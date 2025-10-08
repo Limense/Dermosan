@@ -1,6 +1,6 @@
 # Dermosan - Sistema de Diagnóstico Dermatológico
 
-Sistema automatizado de diagnóstico de enfermedades dermatológicas mediante Redes Neuronales Convolucionales (CNNs) para las Clínicas de San Vicente, Cañete.
+Herramienta Interactiva con Streamlit para el Diagnóstico Dermatológico Asistido mediante Redes Neuronales Convolucionales (CNNs)
 
 ## 🏥 Descripción del Proyecto
 
@@ -163,11 +163,11 @@ El modelo fue entrenado usando:
 
 ## 👥 Equipo de Desarrollo
 
-Desarrollado para las Clínicas de San Vicente, Cañete como parte del proyecto de mejora en diagnóstico dermatológico automatizado.
+Desarrollado en el marco del proyecto de investigación sobre diagnóstico dermatológico automatizado basado en inteligencia artificial.
 
 ## 📄 Licencia
 
-Este proyecto está destinado para uso médico en las Clínicas de San Vicente, Cañete. 
+Este proyecto fue desarrollado con fines de investigación y aplicación médica, en el marco del estudio DERMOSAN – UNDC 2025, orientado al apoyo diagnóstico dermatológico mediante inteligencia artificial.
 
 ## ⚠️ Disclaimer Médico
 
@@ -182,4 +182,4 @@ Siempre consulte con un dermatólogo certificado para confirmación diagnóstica
 ---
 
 **Dermosan v1.0.0** - Sistema de Diagnóstico Dermatológico Automatizado  
-*Clínicas de San Vicente, Cañete*
+*DERMOSAN – UNDC 2025*

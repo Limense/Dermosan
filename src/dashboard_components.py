@@ -267,7 +267,7 @@ def create_medical_disclaimer():
                     border-radius: 10px; 
                     margin-top: 1.5rem;">
             <p style="margin: 0; font-size: 0.9rem; opacity: 0.8;">
-                🏥 Para consultas médicas, contacte con las Clínicas de San Vicente, Cañete
+                🏥 Para consultas médicas, contacte con su centro de salud o especialista dermatológico de confianza.
             </p>
         </div>
     </div>

@@ -37,7 +37,7 @@ def display_header():
              Dermosan - Sistema de Diagnóstico Dermatológico
         </h1>
         <p style="color: white; text-align: center; margin: 0.5rem 0 0 0; font-size: 1.2rem; opacity: 0.95;">
-            Clínicas de San Vicente, Cañete 
+           Proyecto DERMOSAN – UNDC 2025
         </p>
         <div style="text-align: center; margin-top: 1.5rem;">
             <span style="background: rgba(255,255,255,0.2); color: white; padding: 0.5rem 1.5rem; 
@@ -76,7 +76,7 @@ def display_sidebar_info():
         
         st.markdown("""
         **Modelo:** ResNet152 con Transfer Learning  
-        **Dataset:** 30,000+ imágenes médicas  
+        **Dataset:** +27,000 imágenes  
         **Input:** 224x224 RGB  
         **Tiempo promedio:** < 3 segundos  
         """)
@@ -88,18 +88,20 @@ def display_sidebar_info():
         st.markdown(create_status_indicator("active", "IA Lista para Diagnóstico"), unsafe_allow_html=True)
         
         st.markdown("### Estadísticas del Dataset")
+    
         dataset_stats = {
-            "Melanoma": 3140,
-            "Melanocytic Nevi": 7970,
-            "Basal Cell Carcinoma": 3323,
-            "Benign Keratosis": 2624,
-            "Warts Molluscum": 2103,
-            "Psoriasis Lichen": 2055,
-            "Seborrheic Keratoses": 1847,
-            "Tinea Ringworm": 1702,
             "Eczema": 1677,
-            "Atopic Dermatitis": 1257
+            "Melanoma": 3140,
+            "Atopic Dermatitis": 1257,
+            "Basal Cell Carcinoma (BCC)": 3323,
+            "Melanocytic Nevi (NV)": 7970,
+            "Benign Keratosis-like Lesions (BKL)": 2624,
+            "Psoriasis / Lichen Planus & related diseases": 2055,
+            "Seborrheic Keratoses & other benign tumors": 1847,
+            "Tinea / Candidiasis & other fungal infections": 1702,
+            "Warts / Molluscum & other viral infections": 2103
         }
+
         
         df_stats = pd.DataFrame(
             list(dataset_stats.items()), 
@@ -725,7 +727,7 @@ def export_diagnosis_report(image, prediction_result: Dict, quality_result: Dict
     
     Fecha y hora: {timestamp}
     Sistema: Dermosan v1.0.0
-    Clínica: San Vicente, Cañete
+    Clínica: DERMOSAN – UNDC 2025
     
     ANÁLISIS DE IMAGEN:
     ------------------
@@ -1066,7 +1068,7 @@ def display_medical_footer():
     <div class="footer">
         <h4 style="margin: 0 0 1rem 0;"> Dermosan - Sistema de Diagnóstico Dermatológico</h4>
         <p style="margin: 0.5rem 0; opacity: 0.9;">
-            Clínicas de San Vicente, Cañete | Desarrollado con IA ResNet152
+            Proyecto DERMOSAN – UNDC 2025 | Desarrollado con IA ResNet152
         </p>
         <p style="margin: 0.5rem 0; font-size: 0.9rem; opacity: 0.8;">
             🔬 Este sistema es una herramienta de apoyo diagnóstico. 
