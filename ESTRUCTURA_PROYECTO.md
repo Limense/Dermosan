@@ -1,6 +1,6 @@
-# 📁 Estructura del Proyecto Dermosan
+#  Estructura del Proyecto Dermosan
 
-## 🏗️ Arquitectura Principal
+##  Arquitectura Principal
 
 ```
 Dermosan/
@@ -30,7 +30,7 @@ Dermosan/
 └── 🗂️ dermosan_venv/                 # Entorno virtual Python (local)
 ```
 
-## 🔧 Archivos Principales
+##  Archivos Principales
 
 ### 📄 **app.py**
 - **Propósito:** Interfaz principal de la aplicación web
@@ -51,34 +51,34 @@ Dermosan/
 - **Propósito:** Configuraciones centralizadas
 - **Características:** Parámetros del modelo, colores médicos, constantes
 
-## 🚀 Archivos de Deployment
+##  Archivos de Deployment
 
-### ✅ **Necesarios para Producción:**
+###  **Necesarios para Producción:**
 - `app.py` - Aplicación principal
 - `src/` - Módulos del sistema
 - `Modelo Entrenado/best_resnet152.h5` - Modelo IA
 - `.streamlit/config.toml` - Configuración
 - `requirements.txt` - Dependencias (si existe)
 
-### 🗂️ **Archivos de Desarrollo:**
+###  **Archivos de Desarrollo:**
 - `Archivos_de_Entrenamiento/` - Solo para reentrenamiento
 - `test_system.py` - Pruebas del sistema
 - `verificar_modelo.py` - Verificación del modelo
 - `manual_usuario_mejorado.tex` - Documentación
 
-### 🚫 **Excluidos del Repositorio:**
+###  **Excluidos del Repositorio:**
 - `dermosan_venv/` - Entorno virtual
 - `__pycache__/` - Cache de Python
 - `*.log` - Archivos de logs
 - Archivos temporales y respaldos
 
-## 🎯 Optimizaciones Aplicadas
+##  Optimizaciones Aplicadas
 
-1. **✅ Eliminados archivos duplicados:** `app_backup.py`, `manual_deusuario.txt`
-2. **✅ Removidos módulos no utilizados:** `dashboard_components.py`, `styles.py`
-3. **✅ Reorganizada estructura:** Movidos archivos de entrenamiento a carpeta específica
-4. **✅ Limpieza de cache:** Eliminados archivos `__pycache__`
-5. **✅ Mejorado .gitignore:** Agregadas exclusiones específicas de Dermosan
+1. **Eliminados archivos duplicados:** `app_backup.py`, `manual_deusuario.txt`
+2. **Removidos módulos no utilizados:** `dashboard_components.py`, `styles.py`
+3. **Reorganizada estructura:** Movidos archivos de entrenamiento a carpeta específica
+4. **Limpieza de cache:** Eliminados archivos `__pycache__`
+5. **Mejorado .gitignore:** Agregadas exclusiones específicas de Dermosan
 
 ## 📊 Métricas del Proyecto
 

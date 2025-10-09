@@ -2,11 +2,11 @@
 
 Herramienta Interactiva con Streamlit para el Diagnóstico Dermatológico Asistido mediante Redes Neuronales Convolucionales (CNNs)
 
-## 🏥 Descripción del Proyecto
+##  Descripción del Proyecto
 
 Dermosan es un sistema de inteligencia artificial diseñado para asistir a los profesionales médicos en el diagnóstico de 10 tipos diferentes de enfermedades dermatológicas. Utiliza un modelo ResNet152 entrenado con más de 30,000 imágenes dermatológicas.
 
-### 🎯 Enfermedades Diagnosticadas
+###  Enfermedades Diagnosticadas
 
 1. **Eczema** (1,677 imágenes)
 2. **Warts Molluscum and Viral Infections** (2,103 imágenes)
@@ -19,7 +19,7 @@ Dermosan es un sistema de inteligencia artificial diseñado para asistir a los p
 9. **Seborrheic Keratoses** (1,800 imágenes)
 10. **Tinea Ringworm Candidiasis** (1,700 imágenes)
 
-## 🚀 Características Principales
+##  Características Principales
 
 - **Modelo de Deep Learning**: ResNet152 con transfer learning
 - **Interfaz intuitiva**: Desarrollada con Streamlit
@@ -29,7 +29,7 @@ Dermosan es un sistema de inteligencia artificial diseñado para asistir a los p
 - **Reportes exportables**: Generación de informes completos
 - **Validación médica**: Recordatorios de validación profesional
 
-## 📋 Requisitos del Sistema
+##  Requisitos del Sistema
 
 ### Dependencias principales:
 - Python 3.8+
@@ -39,7 +39,7 @@ Dermosan es un sistema de inteligencia artificial diseñado para asistir a los p
 - OpenCV, Pillow
 - Scikit-learn
 
-## 🛠️ Instalación
+##  Instalación
 
 1. **Clonar el repositorio:**
 ```bash
@@ -77,7 +77,7 @@ Dermosan/
 └── Datos de prueba/         # Imágenes para testing
 ```
 
-## 🏃‍♂️ Uso del Sistema
+##  Uso del Sistema
 
 ### Ejecutar la aplicación:
 ```bash
@@ -91,7 +91,7 @@ streamlit run app.py
 - Obtener diagnóstico y recomendaciones
 - Generar reporte médico
 
-## 📊 Rendimiento del Modelo
+##  Rendimiento del Modelo
 
 - **Arquitectura**: ResNet152 con transfer learning
 - **Precisión estimada**: ~95%
@@ -99,7 +99,7 @@ streamlit run app.py
 - **Validación**: Split 80/10/10 (train/val/test)
 - **Optimizaciones**: Data augmentation, class balancing
 
-## 🔧 Estructura del Código
+##  Estructura del Código
 
 ### `app.py`
 Aplicación principal de Streamlit con:
@@ -129,7 +129,7 @@ Utilidades de interfaz:
 - Formateo de resultados
 - Exportación de reportes
 
-## 🏥 Uso Clínico
+##  Uso Clínico
 
 ### Recomendaciones:
 1. **Uso como herramienta de apoyo** - No reemplaza criterio médico
@@ -143,7 +143,7 @@ Utilidades de interfaz:
 - Dependiente de calidad de imagen
 - No reemplaza biopsia cuando sea necesaria
 
-## 🔬 Entrenamiento del Modelo
+##  Entrenamiento del Modelo
 
 El modelo fue entrenado usando:
 - **Base**: ResNet152 pre-entrenado en ImageNet
@@ -152,7 +152,7 @@ El modelo fue entrenado usando:
 - **Augmentación**: Rotación, zoom, flip horizontal
 - **Balanceamiento**: Pesos de clase para dataset desbalanceado
 
-## 📈 Mejoras Futuras
+##  Mejoras Futuras
 
 - [ ] Integración con sistemas hospitalarios (HL7 FHIR)
 - [ ] Versión móvil para dispositivos médicos
@@ -161,15 +161,15 @@ El modelo fue entrenado usando:
 - [ ] Seguimiento temporal de lesiones
 - [ ] API REST para integración
 
-## 👥 Equipo de Desarrollo
+##  Equipo de Desarrollo
 
 Desarrollado en el marco del proyecto de investigación sobre diagnóstico dermatológico automatizado basado en inteligencia artificial.
 
-## 📄 Licencia
+##  Licencia
 
 Este proyecto fue desarrollado con fines de investigación y aplicación médica, en el marco del estudio DERMOSAN – UNDC 2025, orientado al apoyo diagnóstico dermatológico mediante inteligencia artificial.
 
-## ⚠️ Disclaimer Médico
+##  Disclaimer Médico
 
 Este sistema es una herramienta de apoyo al diagnóstico y NO reemplaza:
 - El criterio clínico profesional
