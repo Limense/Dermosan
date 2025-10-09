@@ -119,22 +119,28 @@ checkpoint_cb = ModelCheckpoint(
     verbose=1
 )
 
-# ── 10) (Opcional) Retomar desde checkpoint ─────────────────────────────────
-# Descomenta estas líneas para pausar y reanudar:
-last_ckpt     = "checkpoints/resnet152-epoch03-val0.69.weights.h5"
-model.load_weights(last_ckpt)
-initial_epoch = 3
-total_epochs  = 9
+# ── 10) (Opcional) Retomar desde un checkpoint ───────────────────────────────
+# 🔹 Si es la primera vez que entrenas, DEJA COMENTADAS las siguientes líneas.
+# 🔹 Si ya tienes un checkpoint (.h5) y deseas continuar el entrenamiento,
+#    descomenta y ajusta la ruta + número de época según corresponda.
 
-# ── 11) Entrenamiento ──────────────────────────────────────────────────────
+# last_ckpt = "checkpoints/resnet152-epoch03-val0.69.weights.h5"
+# model.load_weights(last_ckpt)
+# initial_epoch = 3     # Número de época donde se detuvo el entrenamiento
+initial_epoch = 0        # 0 si comienzas desde cero
+total_epochs  = 9        # Total de épocas a entrenar
+
+
+# ── 11) Entrenamiento ───────────────────────────────────────────────────────
 history = model.fit(
     train_ds,
     validation_data=val_ds,
-    epochs=total_epochs,          # usa total_epochs=9 si empiezas de cero
-    initial_epoch=initial_epoch,  # descomenta esta línea si retomas
+    epochs=total_epochs,          # Total deseado de épocas (p. ej. 9)
+    initial_epoch=initial_epoch,  # Si retomas, ajusta este valor
     class_weight=class_weights,
     callbacks=[lr_cb, checkpoint_cb]
 )
+
 
 
 # ── 12) Guardar modelo final ────────────────────────────────────────────────
