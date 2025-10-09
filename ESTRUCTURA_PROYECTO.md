@@ -1,9 +1,9 @@
-#  Estructura del Proyecto Dermosan
+# 📁 Estructura del Proyecto DERMOSAN
 
-##  Arquitectura Principal
+## 🏗️ Arquitectura Principal
 
 ```
-Dermosan/
+dermosan/
 ├── 📄 app.py                         # Aplicación principal Streamlit
 ├── 📄 README.md                      # Documentación del proyecto
 ├── 📄 test_system.py                 # Script de pruebas del sistema
@@ -16,12 +16,12 @@ Dermosan/
 │   ├── 📄 predictor.py               # Lógica de predicción IA
 │   └── 📄 utils.py                   # Utilidades y componentes UI
 │
-├── 🗂️ Modelo Entrenado/              # Modelo de IA
-│   └── 📄 best_resnet152.h5          # Modelo ResNet152 entrenado
+├── 🗂️ Modelo Entrenado/              # Acá irá el modelo entrenado (.h5) después del entrenamiento
+│   └── 📄 best_resnet152.h5          # Modelo final ResNet152 (generado tras el entrenamiento)
 │
 └── 🗂️ Codigo Entrenamiento/          # Scripts para entrenamiento
     ├── 📄 train_resnet152.py         # Entrenamiento del modelo de IA
-
+    └── 🗂️ IMG_CLASSES/               # Acá irá el dataset de Kaggle: https://www.kaggle.com/datasets/ismailpromus/skin-diseases-image-dataset 
 
 ```
 
@@ -57,13 +57,17 @@ Dermosan/
 - `requirements.txt` – Dependencias del entorno  
 
 ### 🧩 **Archivos de Desarrollo:**
-- `Codigo Entrenamiento/` – Scripts para entrenamiento o reentrenamiento  
+- `Codigo Entrenamiento/` – Scripts para entrenamiento o reentrenamiento
+- `IMG_CLASSES/` – Dataset de Kaggle para el entrenamiento  
 - `test_system.py` – Pruebas funcionales del sistema  
 - `verificar_modelo.py` – Validación del modelo entrenado  
 
 ### 🚫 **Excluidos del Repositorio:**
 - `dermosan_venv/` – Entorno virtual local  
-- `__pycache__/` – Caché de Python  
+- `__pycache__/` – Caché de Python
+- `*.log` – Archivos de logs  
+- Archivos temporales y respaldos automáticos  
+
 
 ---
 

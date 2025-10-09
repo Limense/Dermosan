@@ -2,11 +2,11 @@
 
 Herramienta Interactiva con Streamlit para el Diagnóstico Dermatológico Asistido mediante Redes Neuronales Convolucionales (CNNs)
 
-##  Descripción del Proyecto
+## 🧠 Descripción del Proyecto
 
 Repositorio oficial del proyecto DERMOSAN, una herramienta de diagnóstico dermatológico asistido por inteligencia artificial. Integra un modelo ResNet152 entrenado sobre 27 153 imágenes dermatológicas y una interfaz Streamlit para la carga, análisis y visualización de resultados en tiempo real. 
 
-###  Enfermedades Diagnosticadas
+### 🩹 Enfermedades Diagnosticadas
 
 1. **Eczema** *(1,677 imágenes)*
 2. **Melanoma** *(3,140 imágenes)*
@@ -22,8 +22,7 @@ Repositorio oficial del proyecto DERMOSAN, una herramienta de diagnóstico derma
 **Total general:** *27,153 imágenes*
 
 
-
-##  Características Principales
+## 🚀 Características Principales
 
 - **Modelo de Deep Learning**: ResNet152 con transfer learning
 - **Interfaz intuitiva**: Desarrollada con Streamlit
@@ -71,17 +70,20 @@ pip install -r requirements.txt
 4. **Verificar estructura de archivos:**
 ```
 dermosan/
-├── app.py                  # Aplicación principal (interfaz Streamlit)
-├── requirements.txt        # Dependencias del entorno
-├── src/                    # Módulos del sistema
-│ ├── config.py                 # Configuración general del sistema
-│ ├── predictor.py              # Módulo de predicción
-│ └── utils.py                  # Utilidades de interfaz
-├── Modelo Entrenado/       # 📁 Acá irá el modelo entrenado (.h5)
-│ └── best_resnet152.h5         # Modelo final ResNet152
-├── Codigo Entrenamiento/   # Scripts para entrenamiento
-│ └── train_resnet152.py        # Entrenamiento del modelo      
-└── verificar_modelo.py     # Validación del modelo
+├── app.py                   # Aplicación principal (interfaz Streamlit)
+├── requirements.txt         # Dependencias del entorno
+├── src/                     # Módulos del sistema
+│   ├── config.py            # Configuración general del sistema
+│   ├── predictor.py         # Módulo de predicción
+│   └── utils.py             # Utilidades de interfaz
+├── Modelo_Entrenado/        # 📁 Aquí irá el modelo entrenado (.h5) tras el entrenamiento
+│   └── best_resnet152.h5    # Modelo final ResNet152
+├── Codigo_Entrenamiento/    # Scripts y datos para entrenamiento
+│   ├── train_resnet152.py   # Entrenamiento del modelo
+│   └── IMG_CLASSES/         # 📁 Aquí irá el dataset de Kaggle:
+│                            # https://www.kaggle.com/datasets/ismailpromus/skin-diseases-image-dataset
+└── verificar_modelo.py      # Validación del modelo
+
 ```
 
 ##  Uso del Sistema
