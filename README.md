@@ -2,11 +2,11 @@
 
 Herramienta Interactiva con Streamlit para el Diagnóstico Dermatológico Asistido mediante Redes Neuronales Convolucionales (CNNs)
 
-## 🏥 Descripción del Proyecto
+##  Descripción del Proyecto
 
 Repositorio oficial del proyecto DERMOSAN, una herramienta de diagnóstico dermatológico asistido por inteligencia artificial. Integra un modelo ResNet152 entrenado sobre 27 153 imágenes dermatológicas y una interfaz Streamlit para la carga, análisis y visualización de resultados en tiempo real. 
 
-### 🎯 Enfermedades Diagnosticadas
+###  Enfermedades Diagnosticadas
 
 1. **Eczema** *(1,677 imágenes)*
 2. **Melanoma** *(3,140 imágenes)*
@@ -23,17 +23,17 @@ Repositorio oficial del proyecto DERMOSAN, una herramienta de diagnóstico derma
 
 
 
-## 🚀 Características Principales
+##  Características Principales
 
-- **Modelo de Deep Learning:** Basado en arquitectura **ResNet152** con *transfer learning*  
-- **Interfaz interactiva:** Desarrollada con **Streamlit** para diagnóstico en tiempo real  
-- **Análisis de calidad de imagen:** Evaluación automática de nitidez, iluminación y resolución  
-- **Diagnóstico diferencial:** Visualización de las **Top 3 predicciones** con probabilidades  
-- **Recomendaciones clínicas:** Sugerencias médicas interpretativas según nivel de confianza  
-- **Reportes exportables:** Generación automática de informes de diagnóstico en formato texto  
-- **Validación médica:** Recordatorio explícito de interpretación por un profesional de salud
+- **Modelo de Deep Learning**: ResNet152 con transfer learning
+- **Interfaz intuitiva**: Desarrollada con Streamlit
+- **Análisis de calidad de imagen**: Evaluación automática de idoneidad
+- **Diagnóstico diferencial**: Top 3 predicciones con probabilidades
+- **Recomendaciones clínicas**: Sugerencias médicas basadas en confianza
+- **Reportes exportables**: Generación de informes completos
+- **Validación médica**: Recordatorios de validación profesional
 
-
+## 📋 Requisitos del Sistema
 
 ### 🧩 Dependencias principales
 
@@ -46,7 +46,7 @@ Repositorio oficial del proyecto DERMOSAN, una herramienta de diagnóstico derma
 - **Matplotlib** y **Seaborn**
 
 
-## 🛠️ Instalación
+##  Instalación
 
 1. **Clonar el repositorio:**
 ```bash
@@ -84,7 +84,7 @@ dermosan/
 └── verificar_modelo.py     # Validación del modelo
 ```
 
-## 🏃‍♂️ Uso del Sistema
+##  Uso del Sistema
 
 ### Ejecutar la aplicación:
 ```bash
@@ -98,7 +98,7 @@ streamlit run app.py
 - Obtener diagnóstico y recomendaciones
 - Generar reporte médico
 
-## 📊 Rendimiento del Modelo
+##  Rendimiento del Modelo
 
 - **Arquitectura**: ResNet152 con *transfer learning*  
 - **Precisión estimada**: ~95%  
@@ -106,7 +106,7 @@ streamlit run app.py
 - **Validación**: División 80/10/10 (train/val/test)  
 - **Optimizaciones**: *Data augmentation*, *class balancing*  
 
-## 🔧 Estructura del Código
+##  Estructura del Código
 
 ### `app.py`
 Aplicación principal de **Streamlit** con:
@@ -136,7 +136,7 @@ Utilidades de interfaz:
 - Formateo de resultados clínicos  
 - Exportación de reportes médicos  
 
-## 🏥 Uso Clínico
+##  Uso Clínico
 
 ### Recomendaciones:
 1. **Uso como herramienta de apoyo** – No reemplaza el criterio médico profesional.  
@@ -150,7 +150,7 @@ Utilidades de interfaz:
 - Su rendimiento depende de la calidad de la imagen.  
 - No reemplaza la biopsia ni otros estudios confirmatorios.  
 
-## 🔬 Entrenamiento del Modelo
+##  Entrenamiento del Modelo
 
 El modelo fue entrenado usando:
 - **Base**: ResNet152 preentrenado en *ImageNet*  
@@ -159,7 +159,7 @@ El modelo fue entrenado usando:
 - **Augmentación**: Rotación, zoom, volteo horizontal  
 - **Balanceamiento**: Pesos de clase automáticos para dataset desbalanceado  
 
-## 📈 Mejoras Futuras
+##  Mejoras Futuras
 
 - [ ] Versión móvil para dispositivos médicos  
 - [ ] Inclusión de más clases dermatológicas  
@@ -168,7 +168,7 @@ El modelo fue entrenado usando:
 - [ ] API REST para integración con otros sistemas
 
 
-## 👥 Equipo de Desarrollo
+##  Equipo de Desarrollo
 
 Desarrollado en el marco del proyecto de investigación **“DERMOSAN – Sistema de Diagnóstico Dermatológico Asistido por Inteligencia Artificial”**, como parte de las iniciativas de innovación promovidas por la **Universidad Nacional de Cañete (UNDC)**.
 
@@ -181,7 +181,7 @@ Desarrollado en el marco del proyecto de investigación **“DERMOSAN – Sistem
 
 
 
-## 📄 Licencia
+##  Licencia
 
 Este proyecto se distribuye bajo la licencia [MIT](https://opensource.org/licenses/MIT).  
 **DERMOSAN – UNDC 2025** fue desarrollado con fines de investigación y aplicación médica, orientado al apoyo diagnóstico dermatológico mediante inteligencia artificial.
@@ -193,7 +193,7 @@ Este proyecto se distribuye bajo la licencia [MIT](https://opensource.org/licens
 Este trabajo fue financiado por la **Dirección de Innovación y Transferencia Tecnológica (DITT)** de la **Vicepresidencia de Investigación** de la **Universidad Nacional de Cañete (UNDC)**, en el marco del **“Concurso de Investigación para el Desarrollo de Innovaciones y Propiedad Intelectual”**, bajo el **número de contrato 017-2024**.
 
 
-## ⚠️ Disclaimer Médico
+##  Disclaimer Médico
 
 Este sistema es una **herramienta de apoyo al diagnóstico** y **no reemplaza**:
 

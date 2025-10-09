@@ -1,6 +1,6 @@
-# 📁 Estructura del Proyecto Dermosan
+#  Estructura del Proyecto Dermosan
 
-## 🏗️ Arquitectura Principal
+##  Arquitectura Principal
 
 ```
 Dermosan/
@@ -25,7 +25,7 @@ Dermosan/
 
 ```
 
-## 🔧 Archivos Principales
+##  Archivos Principales
 
 ### 📄 **app.py**
 - **Propósito:** Interfaz principal de la aplicación web  
@@ -48,7 +48,7 @@ Dermosan/
 
 ---
 
-## 🚀 Archivos de Deployment
+##  Archivos de Deployment
 
 ### ✅ **Necesarios para Producción:**
 - `app.py` – Aplicación principal  
@@ -67,7 +67,7 @@ Dermosan/
 
 ---
 
-## 🎯 Optimizaciones Aplicadas
+##  Optimizaciones Aplicadas
 
 1. **✅ Reorganizada la estructura:** Archivos de entrenamiento movidos a `Codigo Entrenamiento/`  
 2. **✅ Eliminados archivos obsoletos y duplicados**  
